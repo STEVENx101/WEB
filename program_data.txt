@@ -1,0 +1,17 @@
+Stocks
+50
+
+Queues
+Queue 1
+  - Required burgers: 3
+  - Required burgers: 4
+
+Queue 2
+  - Required burgers: 3
+  - Required burgers: 4
+  - Required burgers: 3
+
+Queue 3
+  - Required burgers: 4
+  - Required burgers: 3
+

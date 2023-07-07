@@ -3,7 +3,8 @@ function changeColorScheme(color) {
     if (color === 'black') {
       document.body.style.color = 'white';
       document.getElementById('studentDetails').style.color = 'white';
-     
+      document.getElementsByClassName('arrow').style.fill = 'white';
+
     } else {
       document.body.style.color = 'black';
       document.getElementById('studentDetails').style.color = 'black';

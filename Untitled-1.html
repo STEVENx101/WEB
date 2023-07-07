@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hall of Fame </title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+  }
+  
+  #colorSchemes {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .colorOption {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .image-container {
+    display: inline-block;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-container figure {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 15px;
+  
+  }
+  
+  img {
+    border: 1px solid #000;
+    display: block;
+    width: 350px;
+    height: 200px;
+    border-radius: 9.1px;
+    
+  
+  }
+  img:hover {
+    scale: 1.2;
+    transition: 250ms ease-in-out;
+  }
+
+  
+  .image-container figure[style*="background-color: black;"] {
+    border-color: white;
+  }
+  
+  .image-container figure[style*="background-color: black;"] img {
+    border-color: white;
+  }
+  
+  figcaption {
+    text-align: center;
+  }
+  
+  #fontSizes {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-top: 20px;
+  }
+  
+  .fontSizeOption {
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  #fontSizes button {
+    margin-right: 10px;
+  }
+
+  .leftarrow{
+    transform: translate(7%, -250%);
+    position: relative;
+  }
+  
+  #enlargedContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1;
+    text-align: center;
+    
+    
+  }
+  
+  #enlargedContainer img {
+    width: 700px;
+    height: 400px;
+    
+  }
+  
+  #enlargedContainer h3,
+  #enlargedContainer p {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  #enlargedContainer  img {
+    transform: translate(-50%, 0%);
+    position: relative;
+    left: 50%;
+    top: 50%;
+  }
+  
+  
+  #studentDetails {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    color: black;
+    font-size: 12px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+ 
+  .bottom-left-links {
+    position: fixed;
+    bottom: 20px;
+    left: 0px;
+    text-align: left;
+}
+
+.bottom-left-links a {
+    display: block;
+    margin-bottom: 10px;
+    background-color: rgb(2, 2, 2);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: rgb(255, 255, 255);
+}
+
+
+    </style>
+    
+</head>
+<body>
+    <script>  
+    function changeColorScheme(color) {
+    document.body.style.backgroundColor = color;
+    if (color === 'black') {
+      document.body.style.color = 'white';
+      document.getElementById('studentDetails').style.color = 'white';
+      
+
+    } else {
+      document.body.style.color = 'black';
+      document.getElementById('studentDetails').style.color = 'black';
+      
+    }
+  }
+  
+          function increaseFontSize() {
+              var currentSize = parseInt(
+                  window.getComputedStyle(document.body, null).getPropertyValue('font-size')
+              );
+              document.body.style.fontSize = currentSize + 2 + 'px';
+          }
+  
+          function decreaseFontSize() {
+              var currentSize = parseInt(
+                  window.getComputedStyle(document.body, null).getPropertyValue('font-size')
+              );
+              document.body.style.fontSize = currentSize - 2 + 'px';
+          }
+  
+          function showEnlargedImage(src, title, description) {
+              var enlargedImg = document.getElementById('enlargedImg');
+              var enlargedTitle = document.getElementById('enlargedTitle');
+              var enlargedDescription = document.getElementById('enlargedDescription');
+  
+              enlargedImg.src = src;
+              enlargedTitle.textContent = title;
+              enlargedDescription.textContent = description;
+  
+              document.getElementById('enlargedContainer').style.display = 'block';
+          }
+  
+          function hideEnlargedImage() {
+              document.getElementById('enlargedContainer').style.display = 'none';
+          }
+
+          function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function changeFontSize(size) {
+            document.body.style.fontSize = size + 'px';
+        }
+
+
+        function showNextImageSet() {
+            var currentImageSet = document.getElementById('imageSet1');
+            var nextImageSet = document.getElementById('imageSet2');
+        
+            currentImageSet.style.display = 'none';
+            nextImageSet.style.display = 'block';
+        }
+        function showPreviousImageSet() {
+            var currentImageSet = document.getElementById('imageSet2');
+            var nextImageSet = document.getElementById('imageSet1');
+        
+            currentImageSet.style.display = 'none';
+            nextImageSet.style.display = 'block';
+        }
+    </script>
+    
+
+    <h1><b>Hall of Fame</b></h1>
+    <div id="colorSchemes">
+        <div class="colorOption" style="background-color: white;" onclick="changeColorScheme('white')"></div>
+        <div class="colorOption" style="background-color: black;" onclick="changeColorScheme('black')"></div>
+        <div class="colorOption" style="background-color: red;" onclick="changeColorScheme(getRandomColor())"></div>
+    </div>
+<div  id="imageSet1">
+    <div class="image-container">
+        <div class="imageContainer" onmouseover="showEnlargedImage('mahela.jpg', 'Mahela Jayawardena', 'One of the great batters to ever play the game, Sri Lanka’s Mahela Jayawardena set new standards in both Test and white-ball cricket, playing 652 times for his country in a remarkable 18-year career.')" onmouseout="hideEnlargedImage()">
+        <figure>
+            <img src="mahela.jpg" alt="Image 1">
+                
+            <figcaption><b>Mahela Jayawardena</b></figcaption>
+        </figure>
+        </div>
+        <div class="imageContainer" onmouseover="showEnlargedImage('Untitled1.jpg', 'Image 1', 'ahhhhhhhhhhhhhhh')" onmouseout="hideEnlargedImage()">
+            <figure>
+                <img src="Untitled1.jpg" alt="Image 2">
+                    
+                <figcaption>Caption for Image 1</figcaption>
+            </figure>
+            </div>
+            <div class="imageContainer" onmouseover="showEnlargedImage('Kumar.jpg', 'Kumar Sangakkara', 'As elegant as they came, Sangakkara climbed from strength to strength across his 15-year international career. A T20 World Cup winner, two-time Cricket World Cup runner-up, and frequently No.1 in the Test batting rankings, Sangakkara thrived in every format.')" onmouseout="hideEnlargedImage()">
+                <figure>
+                    <img src="Kumar.jpg" alt="Image 3">
+                        
+                    <figcaption><b>Kumar Sangakkara</b></figcaption>
+                </figure>
+                </div>
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+
+
+
+<div  id="imageSet2"  style="display: none;">
+
+    
+
+    <div class="image-container">
+        <div class="imageContainer" onmouseover="showEnlargedImage('Untitled1.jpg', 'Image 1', 'ahhhhhhhhhhhhhhh')" onmouseout="hideEnlargedImage()">
+        <figure>
+            <img src="Untitled3.jpg" alt="Image 1">
+                
+            <figcaption>Caption for Image 1</figcaption>
+        </figure>
+        </div>
+        <div class="imageContainer" onmouseover="showEnlargedImage('Untitled1.jpg', 'Image 1', 'ahhhhhhhhhhhhhhh')" onmouseout="hideEnlargedImage()">
+            <figure>
+                <img src="Untitled3.jpg" alt="Image 2">
+                    
+                <figcaption>Caption for Image 1</figcaption>
+            </figure>
+            </div>
+            <div class="imageContainer" onmouseover="showEnlargedImage('Untitled3.jpg', 'Image 1', 'ahhhhhhhhhhhhhhh')" onmouseout="hideEnlargedImage()">
+                <figure>
+                    <img src="Untitled3.jpg" alt="Image 3">
+                        
+                    <figcaption>Caption for Image 1</figcaption>
+                </figure>
+                </div>
+    </div>
+</div>
+
+<div class="leftarrow">
+    <svg version="1.1" id="Layer_1"  x="0px" y="0px" width="60px" height="60px" viewBox="0 0 122.883 122.882" enable-background="new 0 0 122.883 122.882" xml:space="preserve"><g><path d="M61.441,0L61.441,0l0.001,0.018c16.974,0,32.335,6.872,43.443,17.98s17.98,26.467,17.98,43.441h0.018v0.002l0,0h-0.018 c0,16.976-6.873,32.335-17.98,43.443c-11.109,11.107-26.467,17.979-43.442,17.979v0.018h-0.002l0,0v-0.018 c-16.975,0-32.335-6.872-43.443-17.98C6.89,93.775,0.018,78.417,0.018,61.442H0v-0.001V61.44h0.018 c0-16.975,6.872-32.334,17.98-43.443C29.106,6.89,44.465,0.018,61.44,0.018L61.441,0L61.441,0L61.441,0z M71.701,42.48 c1.908-1.962,1.863-5.101-0.098-7.009c-1.963-1.909-5.102-1.865-7.01,0.097L42.755,58.088l3.553,3.456l-3.568-3.46 c-1.911,1.971-1.863,5.118,0.108,7.029c0.058,0.056,0.116,0.109,0.175,0.162l21.571,22.057c1.908,1.962,5.047,2.006,7.01,0.097 c1.961-1.908,2.006-5.047,0.098-7.01L53.227,61.529L71.701,42.48L71.701,42.48z"/></g></svg>
+
+</div>
+
+
+<div class="button-container">
+    <button onclick="showPreviousImageSet()">Previous</button>
+    <button onclick="showNextImageSet()">Next</button>
+</div>
+
+
+    <div id="fontSizes">
+        <span class="fontSizeOption" style="font-size: 14px;" onclick="changeFontSize(14)">A</span>
+        <span class="fontSizeOption" style="font-size: 18px;" onclick="changeFontSize(18)">A</span>
+        <span class="fontSizeOption" style="font-size: 22px;" onclick="changeFontSize(22)">A</span>
+    </div>
+
+    <div id="enlargedContainer">
+        <img id="enlargedImg" alt="Enlarged Image">
+        <h3 id="enlargedTitle"></h3>
+        <p id="enlargedDescription"></p>
+    </div>
+
+    <div id="studentDetails">
+        Student 4<br>
+    </div>
+
+    <div class="bottom-left-links">
+        <a href="PageEditor.html">Page Editor</a>
+     
+     </div>
+</body>
+</html>
