@@ -23,7 +23,7 @@ h1 {
     background-color: #756e6e50; /* Light ash background color */
     margin: 0; /* Remove default margin */
   }
-
+  
   .container {
     display: flex;
     align-items: center;
@@ -38,6 +38,10 @@ h1 {
     background-size: cover;
     background-position: center;
     margin-right: 20px;
+    z-index: 1;
+    border-top: 5px solid #ff0000; /* Top border color */
+      border-left: 5px solid #ff0000; /* Left border color */
+      padding: 5px; /* Space between the border and the image */
   }
 
   .text-content {
@@ -64,6 +68,11 @@ h1 {
     background-image: url(8.jpg);
     background-size: cover;
     background-position: center;
+    z-index: 1;
+    border-top: 5px solid #ff0000; /* Top border color */
+      border-left: 5px solid #ff0000; /* Left border color */
+      padding: 5px; /* Space between the border and the image */
+    
   }
 
 
@@ -82,8 +91,16 @@ h1 {
     background-size: cover;
     background-position: center;
     margin-right: 20px;
+    z-index: 1;
+    border-top: 5px solid #ff0000; /* Top border color */
+      border-left: 5px solid #ff0000; /* Left border color */
+      padding: 5px; /* Space between the border and the image */
+    
   }
 
   .text-content4 {
     flex: 1;
   }
+
+
+  
