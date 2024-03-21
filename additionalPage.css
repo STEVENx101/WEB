@@ -1,0 +1,50 @@
+h1{
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    left: 40%;
+}
+
+.intro_image{
+   float: left; 
+   margin-right: 20px;
+   margin-top: 16%;
+}
+
+.part1_name{
+    float: right;
+    margin-top: 14%;
+}
+
+.first_part{
+    display: flex;
+    
+}
+
+.çountries{
+    width: 400px;
+    margin-left: 50px;
+}
+
+.dis_part1{
+    font-size: 1.25em;
+}
+
+.present_image{
+    float: left; 
+    margin-right: 20px;
+    margin-top: 16%;
+    
+}
+
+.part2_name{
+    float:right;
+    margin-top: 14%;
+    width: 100%;   
+}
+
+.second_part{
+    display: flex; 
+    
+}
+

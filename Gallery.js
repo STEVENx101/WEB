@@ -1,72 +1,100 @@
+// Function to change the color scheme of the page
 function changeColorScheme(color) {
     document.body.style.backgroundColor = color;
     if (color === 'black') {
-      document.body.style.color = 'white';
-      document.getElementById('studentDetails').style.color = 'white';
-      document.getElementsByClassName('arrow').style.fill = 'white';
-
+        document.body.style.color = 'white';
+        document.getElementById('studentDetails').style.color = 'white';
     } else {
-      document.body.style.color = 'black';
-      document.getElementById('studentDetails').style.color = 'black';
-      
+        document.body.style.color = 'black';
+        document.getElementById('studentDetails').style.color = 'black';
     }
-  }
-  
-          function increaseFontSize() {
-              var currentSize = parseInt(
-                  window.getComputedStyle(document.body, null).getPropertyValue('font-size')
-              );
-              document.body.style.fontSize = currentSize + 2 + 'px';
-          }
-  
-          function decreaseFontSize() {
-              var currentSize = parseInt(
-                  window.getComputedStyle(document.body, null).getPropertyValue('font-size')
-              );
-              document.body.style.fontSize = currentSize - 2 + 'px';
-          }
-  
-          function showEnlargedImage(src, title, description) {
-              var enlargedImg = document.getElementById('enlargedImg');
-              var enlargedTitle = document.getElementById('enlargedTitle');
-              var enlargedDescription = document.getElementById('enlargedDescription');
-  
-              enlargedImg.src = src;
-              enlargedTitle.textContent = title;
-              enlargedDescription.textContent = description;
-  
-              document.getElementById('enlargedContainer').style.display = 'block';
-          }
-  
-          function hideEnlargedImage() {
-              document.getElementById('enlargedContainer').style.display = 'none';
-          }
+}
 
-          function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
+// Function to increase the font size of the page
+function increaseFontSize() {
+    var currentSize = parseInt(
+        window.getComputedStyle(document.body, null).getPropertyValue('font-size')
+    );
+    document.body.style.fontSize = currentSize + 2 + 'px';
+}
 
-        function changeFontSize(size) {
-            document.body.style.fontSize = size + 'px';
-        }
+// Function to decrease the font size of the page
+function decreaseFontSize() {
+    var currentSize = parseInt(
+        window.getComputedStyle(document.body, null).getPropertyValue('font-size')
+    );
+    document.body.style.fontSize = currentSize - 2 + 'px';
+}
 
+// Function to show an enlarged image with title and description
+function showEnlargedImage(src, title, description) {
+    var enlargedImg = document.getElementById('enlargedImg');
+    var enlargedTitle = document.getElementById('enlargedTitle');
+    var enlargedDescription = document.getElementById('enlargedDescription');
 
-        function showNextImageSet() {
-            var currentImageSet = document.getElementById('imageSet1');
-            var nextImageSet = document.getElementById('imageSet2');
-        
-            currentImageSet.style.display = 'none';
-            nextImageSet.style.display = 'block';
-        }
-        function showPreviousImageSet() {
-            var currentImageSet = document.getElementById('imageSet2');
-            var nextImageSet = document.getElementById('imageSet1');
-        
-            currentImageSet.style.display = 'none';
-            nextImageSet.style.display = 'block';
-        }
+    enlargedImg.src = src;
+    enlargedTitle.textContent = title;
+    enlargedDescription.textContent = description;
+
+    document.getElementById('enlargedContainer').style.display = 'block';
+}
+
+// Function to hide the enlarged image
+function hideEnlargedImage() {
+    document.getElementById('enlargedContainer').style.display = 'none';
+}
+
+// Function to generate a random color
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Function to change the font size of the page
+function changeFontSize(size) {
+    document.body.style.fontSize = size + 'px';
+}
+
+// Function to show the next set of images
+function showNextImageSet() {
+    var currentImageSet = document.getElementById('imageSet1');
+    var nextImageSet = document.getElementById('imageSet2');
+
+    currentImageSet.style.display = 'none';
+    nextImageSet.style.display = 'block';
+}
+
+// Function to show the previous set of images
+function showPreviousImageSet() {
+    var currentImageSet = document.getElementById('imageSet2');
+    var nextImageSet = document.getElementById('imageSet1');
+
+    currentImageSet.style.display = 'none';
+    nextImageSet.style.display = 'block';
+}
+
+// Function to show the previous image set with sliding animation
+function showPreviousImageSetWithAnimation() {
+    var imageSet1 = document.getElementById("imageSet1");
+    var imageSet2 = document.getElementById("imageSet2");
+
+    imageSet1.style.display = "block";
+    imageSet2.style.display = "none";
+
+    imageSet1.style.animation = "slide-left 0.5s ease";
+}
+
+// Function to show the next image set with sliding animation
+function showNextImageSetWithAnimation() {
+    var imageSet1 = document.getElementById("imageSet1");
+    var imageSet2 = document.getElementById("imageSet2");
+
+    imageSet1.style.display = "none";
+    imageSet2.style.display = "block";
+
+    imageSet2.style.animation = "slide-right 0.5s ease";
+}
